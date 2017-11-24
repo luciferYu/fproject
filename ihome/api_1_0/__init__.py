@@ -5,7 +5,7 @@
 from flask import Blueprint
 api = Blueprint('api',__name__)
 
-from . import *
+from . import register
 
 @api.after_request
 def after_request(response):

@@ -10,7 +10,9 @@ IMAGE_CODE_REDIS_EXPIRES = 300
 SMS_CODE_REDIS_EXPIRES = 300
 
 # 七牛空间域名
-QINIU_DOMIN_PREFIX = "http://ouwyn64sa.bkt.clouddn.com/"
+QINIU_DOMIN_PREFIX = "http://ozwx8bum6.bkt.clouddn.com/"
+
+
 
 # 城区信息redis缓存时间，单位：秒
 AREA_INFO_REDIS_EXPIRES = 7200

@@ -1,0 +1,70 @@
+1/生成图片验证码
+请求URL /api/v1.0/imagecode/<image_code_id>
+请求方法：GET
+数据格式：jpg
+请求参数：
+参数名         是否必须            参数说明
+image_code_id   是                   图片验证码的扩展名(前端生成的UUID)
+
+返回结果： 返回前端图片验证码，可以使用响应对象
+正确：
+    response = make_response(image)
+    response.headers['Content-Type'] = 'image/jpg'
+
+错误：
+{
+    errno=RET.DBERR,
+    errmsg='保存图片验证码异常'
+}
+
+2/发送短信验证码
+请求方法：GET
+请求URL：/api/v1.0/smscode/<mobile>?text=imagecode,id=image_code_id
+数据格式:json
+请求参数：
+参数名      是否必须           参数说明
+mobile        是               用户数据的手机号
+text          是                图片验证码的内容
+id            是               图片验证码的编号
+
+返回结果：
+正确：
+{
+    errno=RET.OK,
+    errmsg='发送成功'
+}
+错误：
+{
+    errno=RET.THIRDERR,
+    errmsg='发送失败'
+}
+
+3/注册
+请求方法：POST
+请求的URL ：/api/v1.0/users
+数据格式：json
+请求参数：mobile,sms_code，password
+参数名         是否必须            参数说明
+mobile          是                   手机号
+sms_code        是                   短信验证码
+password        是                   密码
+
+返回结果
+正确：返回附属信息，user.to_dict()
+{
+    errno=RET.OK
+    errmsg='OK'
+    data = user.to_dict()
+}
+错误：
+{
+    errno=RET.DBERR,
+    errmsg='查询用户信息异常'
+}
+
+
+
+
+
+
+
