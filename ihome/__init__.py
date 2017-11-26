@@ -52,13 +52,15 @@ def create_app(config_name):
     # 使用flask-session扩展，用redis保存app的session数据
     Session(app)
 
-    #为app添加api蓝图应用
-    from .api_1_0 import api as api_1_0_blueprint
-    app.register_blueprint(api_1_0_blueprint, url_prefix="/api/v1.0")
-
     # 为app添加返回静态html的蓝图应用
     from .web_page import html as html_blueprint
     app.register_blueprint(html_blueprint)
+
+    #为app添加api蓝图应用
+    from .api_1_0 import api as api_1_0_blueprint
+    app.register_blueprint(api_1_0_blueprint,url_prefix="/api/v1.0")
+
+
 
     return app
 

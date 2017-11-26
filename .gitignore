@@ -105,3 +105,6 @@ fprojectenv2
 
 # pycharm
 .idea
+
+# logs
+logs

@@ -20,7 +20,7 @@ from ihome.utils import sms
 from ihome.models import User
 
 
-@api.route('imagecode/<image_code_id>', methods=['GET'])
+@api.route('/imagecode/<image_code_id>', methods=['GET'])
 def generate_image_code(image_code_id):
     '''
     生成图片验证码：
@@ -30,6 +30,7 @@ def generate_image_code(image_code_id):
     :param image_code_id:
     :return:
     '''
+    print('进入')
     name, text, image = captcha.generate_captcha()
     # 在服务器存储图片验证码的内容
     try:
@@ -46,7 +47,7 @@ def generate_image_code(image_code_id):
         return response
 
 
-@api.route('smscode/<mobile>', methods=['GET'])
+@api.route('/smscode/<mobile>', methods=['GET'])
 def send_sms_code(mobile):
     '''
     发送短信 获取参数/校验参数\查询数据\返回结果
@@ -74,7 +75,7 @@ def send_sms_code(mobile):
     if not all([mobile, image_code, image_code_id]):
         return jsonify(errno=RET.PARAMERR, errmsg='参数确实')
     # 校验手机号
-    if not re.match(r'1[345789]\d{9}$', mobile):
+    if not re.match(r'1[3456789]\d{9}$', mobile):
         return jsonify(errno=RET.PARAMERR, errmsg='手机号格式错误')
     # 校验图片验证码，获取本地存储的真是图片验证码
     try:

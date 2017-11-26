@@ -4,8 +4,11 @@
 
 from flask import Blueprint
 api = Blueprint('api',__name__)
-
-from . import register
+#蓝图使用
+#1创建蓝图对象
+#2使用蓝图对象（如果再次拆分文件，需要把拆分出去的文件，再导入创建蓝图对象文件中）
+#3注册蓝图对象
+from . import register,profile
 
 @api.after_request
 def after_request(response):

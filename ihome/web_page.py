@@ -8,8 +8,10 @@ html = Blueprint('html',__name__)
 
 @html.route("/<regex('.*'):file_name>")
 def html_file(file_name):
+    print('进入html_file函数')
     if not file_name:
-        file_name = 'index.html'
+        print('进入首页逻辑')
+        file_name = '/index.html'
 
     if file_name != 'favicon.ico':
         file_name = 'html/' + file_name
